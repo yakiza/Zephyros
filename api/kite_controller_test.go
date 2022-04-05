@@ -42,3 +42,16 @@ func TestAddKiteFailed(t *testing.T) {
 		t.Errorf("handler returned wrong status code: got %v want %v", status, http.StatusBadRequest)
 	}
 }
+
+func TestAddKiteMalformedJSON(t *testing.T) {
+	malformedJSON := "{{}"
+	request := httptest.NewRequest(http.MethodPost, "/kite", bytes.NewReader([]byte(malformedJSON)))
+	w := httptest.NewRecorder()
+	handler := api.NewRouter()
+	handler.ServeHTTP(w, request)
+
+	// Check the status code is what we expect.
+	if status := w.Code; status != http.StatusBadRequest {
+		t.Errorf("handler returned wrong status code: got %v want %v", status, http.StatusBadRequest)
+	}
+}

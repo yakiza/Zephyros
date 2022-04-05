@@ -27,6 +27,7 @@ func (h *KiteController) AddKite(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 	}
+
 	err = h.AddKiteHandler.Add(kiteObj)
 	if err != nil {
 		fmt.Println(err)

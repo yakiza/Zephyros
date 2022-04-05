@@ -10,6 +10,11 @@ type FakeKiteRepository struct {
 	kiteList map[Zephyros.KiteCharacteristics]*Zephyros.Kite
 }
 
+func (repo *FakeKiteRepository) Exist(kite Zephyros.Kite) error {
+	//TODO implement me
+	panic("implement me")
+}
+
 func (repo *FakeKiteRepository) Add(kite Zephyros.Kite) error {
 	repo.mux.Lock()
 	defer repo.mux.Unlock()

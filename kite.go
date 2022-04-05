@@ -12,3 +12,7 @@ type Kite struct {
 type Add interface {
 	Add(kite Kite) error
 }
+
+type Exist interface {
+	Exist(kite Kite) (bool, error)
+}

@@ -11,6 +11,7 @@ type AddHandler struct {
 
 func (h AddHandler) Add(kite Zephyros.Kite) error {
 	// TODO: Check that passed in data is valid
+	// TODO: Check if it already exists
 	err := h.KiteRepository.Add(kite)
 	if err != nil {
 		return err
