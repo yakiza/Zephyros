@@ -10,6 +10,7 @@ type AddHandler struct {
 }
 
 func (h AddHandler) Add(kite Zephyros.Kite) error {
+	// TODO: Check that passed in data is valid
 	err := h.KiteRepository.Add(kite)
 	if err != nil {
 		return err

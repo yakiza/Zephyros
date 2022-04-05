@@ -17,11 +17,15 @@ type KiteController struct {
 	AddKiteHandler kite.AddHandler
 }
 
-func (h *KiteController) AddKite(_ http.ResponseWriter, r *http.Request) {
+func (h *KiteController) AddKite(w http.ResponseWriter, r *http.Request) {
+	if r.Body == http.NoBody {
+		w.WriteHeader(http.StatusBadRequest)
+	}
+
 	var kiteObj Zephyros.Kite
 	err := json.NewDecoder(r.Body).Decode(&kiteObj)
 	if err != nil {
-		return
+		w.WriteHeader(http.StatusBadRequest)
 	}
 	err = h.AddKiteHandler.Add(kiteObj)
 	if err != nil {

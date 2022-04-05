@@ -11,7 +11,7 @@ func NewRouter() http.Handler {
 	r := chi.NewRouter()
 
 	var db fakedb.DB
-	addHandler := kite.AddHandler{KiteRepository: db.Kite()}
+	addHandler := kite.NewAddHandler(db.Kite())
 
 	r.Mount("/kite", MakeKiteController(addHandler))
 	// r.Mount("/bar", MakeBarController())
