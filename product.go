@@ -2,11 +2,13 @@ package Zephyros
 
 // Product entity
 type Product struct {
-	Brand string
-	Model string
-	Size  float32
-	Color string
-	Year  int
+	Name   string
+	Brand  string
+	Model  string
+	Type   string
+	Color  string
+	Size   float32
+	Season int
 }
 
 type Add interface {

@@ -20,7 +20,7 @@ func (repo *FakeProductRepository) Add(product Zephyros.Product) error {
 	repo.mux.Lock()
 	defer repo.mux.Unlock()
 
-	productCharacteristics := Zephyros.MakeProductCharacteristics(product.Brand, product.Model, product.Year)
+	productCharacteristics := Zephyros.MakeProductCharacteristics(product.Brand, product.Model, product.Season)
 	repo.productList[productCharacteristics] = &product
 
 	return nil
