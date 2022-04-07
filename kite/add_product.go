@@ -6,13 +6,13 @@ import (
 )
 
 type AddHandler struct {
-	KiteRepository repository.KiteRepository
+	ProductRepository repository.ProductRepository
 }
 
-func (h AddHandler) Add(kite Zephyros.Kite) error {
+func (h AddHandler) Add(kite Zephyros.Product) error {
 	// TODO: Check that passed in data is valid
 	// TODO: Check if it already exists
-	err := h.KiteRepository.Add(kite)
+	err := h.ProductRepository.Add(kite)
 	if err != nil {
 		return err
 	}
@@ -20,8 +20,8 @@ func (h AddHandler) Add(kite Zephyros.Kite) error {
 	return nil
 }
 
-func NewAddHandler(kiteRepository repository.KiteRepository) AddHandler {
+func NewAddHandler(productRepository repository.ProductRepository) AddHandler {
 	return AddHandler{
-		KiteRepository: kiteRepository,
+		ProductRepository: productRepository,
 	}
 }

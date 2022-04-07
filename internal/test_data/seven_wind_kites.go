@@ -2,8 +2,8 @@ package test_data
 
 import "github.com/yakiza/Zephyros"
 
-func VorasTestKite() Zephyros.Kite {
-	return Zephyros.Kite{
+func VorasTestKite() Zephyros.Product {
+	return Zephyros.Product{
 		Brand: "Voras",
 		Model: "XX",
 		Size:  12,
@@ -12,8 +12,8 @@ func VorasTestKite() Zephyros.Kite {
 	}
 }
 
-func AeolianTestKite() Zephyros.Kite {
-	return Zephyros.Kite{
+func AeolianTestKite() Zephyros.Product {
+	return Zephyros.Product{
 		Brand: "Aeolian",
 		Model: "FX",
 		Size:  12,
@@ -22,8 +22,8 @@ func AeolianTestKite() Zephyros.Kite {
 	}
 }
 
-func AllSevenWindKites() []Zephyros.Kite {
-	return []Zephyros.Kite{
+func AllSevenWindKites() []Zephyros.Product {
+	return []Zephyros.Product{
 		VorasTestKite(),
 		AeolianTestKite(),
 	}

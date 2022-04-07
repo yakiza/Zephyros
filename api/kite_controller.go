@@ -22,7 +22,7 @@ func (h *KiteController) AddKite(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 	}
 
-	var kiteObj Zephyros.Kite
+	var kiteObj Zephyros.Product
 	err := json.NewDecoder(r.Body).Decode(&kiteObj)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)

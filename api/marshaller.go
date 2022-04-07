@@ -10,8 +10,8 @@ type KiteJson struct {
 	Year  int     `json:"year"`
 }
 
-func MarshallKite(kite KiteJson) Zephyros.Kite {
-	return Zephyros.Kite{
+func MarshallKite(kite KiteJson) Zephyros.Product {
+	return Zephyros.Product{
 		Brand: kite.Brand,
 		Model: kite.Model,
 		Size:  kite.Size,
@@ -20,7 +20,7 @@ func MarshallKite(kite KiteJson) Zephyros.Kite {
 	}
 }
 
-func UnmarshalKite(kite Zephyros.Kite) KiteJson {
+func UnmarshalKite(kite Zephyros.Product) KiteJson {
 	return KiteJson{
 		Brand: kite.Brand,
 		Model: kite.Model,

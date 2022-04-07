@@ -1,7 +1,7 @@
 package Zephyros
 
-// Kite entity
-type Kite struct {
+// Product entity
+type Product struct {
 	Brand string
 	Model string
 	Size  float32
@@ -10,9 +10,9 @@ type Kite struct {
 }
 
 type Add interface {
-	Add(kite Kite) error
+	Add(product Product) error
 }
 
 type Exist interface {
-	Exist(kite Kite) (bool, error)
+	Exist(product Product) (bool, error)
 }
