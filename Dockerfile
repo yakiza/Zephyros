@@ -1,21 +1,16 @@
-# syntax=docker/dockerfile:1
-
 FROM golang:1.16-alpine
 
-WORKDIR /app
+WORKDIR /opt/zephyros
 
-
+RUN export GO111MODULE=on
 COPY go.mod ./
 COPY go.sum ./
-
 RUN go mod download
 
-COPY . .
+COPY ./ /opt/zephyros/
 
+RUN cd cmd  && go build -o zephyros
 
-RUN go build -o ./cmd/zephyros
+EXPOSE 8081
 
-EXPOSE 8080
-
-#CMD [ "" ]
-
+CMD ["/opt/zephyros/cmd/zephyros"]

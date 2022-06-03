@@ -11,10 +11,10 @@ type Product struct {
 	Season int
 }
 
-type Add interface {
+type AddService interface {
 	Add(product Product) error
 }
 
-type Exist interface {
-	Exist(product Product) (bool, error)
+type GetService interface {
+	Get(productCharacteristics ProductCharacteristics) (*Product, error)
 }

@@ -3,7 +3,7 @@ package api
 import (
 	"github.com/go-chi/chi"
 	"github.com/yakiza/Zephyros/databases/fakedb"
-	"github.com/yakiza/Zephyros/kite"
+	"github.com/yakiza/Zephyros/product"
 	"go.uber.org/zap"
 	"net/http"
 )
@@ -13,13 +13,9 @@ func NewRouter() http.Handler {
 
 	var db fakedb.DB
 	logger, _ := zap.NewProduction()
-	addHandler := kite.NewAddHandler(logger, db.Kite())
+	addHandler := product.NewAddHandler(logger, db.Product())
 
-	r.Mount("/kite", MakeProductController(addHandler))
-	// r.Mount("/bar", MakeBarController())
-	// r.Mount("/harness", MakeHarnessController())
-	// r.Mount("/board", MakeBoardController())
-	// r.Mount("wetsuit", MakeWetSuitController())
+	r.Mount(ProductMountPoint, MakeProductController(addHandler))
 
 	return r
 }

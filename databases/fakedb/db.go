@@ -4,6 +4,6 @@ import "github.com/yakiza/Zephyros/repository"
 
 type DB struct{}
 
-func (db *DB) Kite() repository.ProductRepository {
-	return NewFakeKiteRepository()
+func (db *DB) Product() repository.ProductRepository {
+	return NewFakeProductRepository()
 }

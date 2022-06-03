@@ -6,8 +6,8 @@ import (
 )
 
 func main() {
-	r :=  api.NewRouter()
-	err := http.ListenAndServe(":8080", r)
+	r := api.NewRouter()
+	err := http.ListenAndServe(":8081", r)
 	if err != nil {
 		return
 	}
