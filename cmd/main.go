@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	r := api.NewRouter()
+	r := api.NewHandler()
 	err := http.ListenAndServe(":8081", r)
 	if err != nil {
 		return
