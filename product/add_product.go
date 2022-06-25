@@ -6,15 +6,15 @@ import (
 	"go.uber.org/zap"
 )
 
-type AddHandler struct {
+type AddProductHandler struct {
 	Logger            *zap.Logger
-	ProductRepository Zephyros.AddService
+	ProductRepository Zephyros.AddProductService
 }
 
-func (h AddHandler) Add(kite Zephyros.Product) error {
+func (h AddProductHandler) AddProduct(product Zephyros.Product) error {
 	// TODO: Check that passed in data is valid
-	h.Logger.Info("Adding Product", zap.Any("Product", kite))
-	err := h.ProductRepository.Add(kite)
+	h.Logger.Info("Adding Product", zap.Any("Product", product))
+	err := h.ProductRepository.AddProduct(product)
 	if err != nil {
 		return err
 	}
@@ -22,8 +22,8 @@ func (h AddHandler) Add(kite Zephyros.Product) error {
 	return nil
 }
 
-func NewAddHandler(logger *zap.Logger, productRepository repository.ProductRepository) AddHandler {
-	return AddHandler{
+func NewAddProductHandler(logger *zap.Logger, productRepository repository.ProductRepository) AddProductHandler {
+	return AddProductHandler{
 		Logger:            logger,
 		ProductRepository: productRepository,
 	}

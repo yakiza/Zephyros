@@ -19,7 +19,7 @@ type ProductTestSuite struct {
 }
 
 func (suite *ProductTestSuite) SetupTest() {
-	suite.handler = api.NewRouter()
+	suite.handler = api.NewHandler()
 }
 
 func (suite *ProductTestSuite) TestAddKiteSuccess() {

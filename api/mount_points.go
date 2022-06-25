@@ -1,5 +1,6 @@
 package api
 
 const (
-	ProductMountPoint = "/v1/product"
+	HealthCheckMountPoint = "/healthcheck"
+	ProductMountPoint     = "/v1/product"
 )

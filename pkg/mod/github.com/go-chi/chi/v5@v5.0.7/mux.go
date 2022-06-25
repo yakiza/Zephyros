@@ -404,7 +404,7 @@ func (mx *Mux) handle(method methodTyp, pattern string, handler http.Handler) *n
 		h = handler
 	}
 
-	// Add the endpoint to the tree and return the node
+	// AddProduct the endpoint to the tree and return the node
 	return mx.tree.InsertRoute(method, pattern, h)
 }
 

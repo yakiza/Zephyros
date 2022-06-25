@@ -228,7 +228,7 @@ func (n *node) addChild(child *node, prefix string) *node {
 	// Parse next segment
 	segTyp, _, segRexpat, segTail, segStartIdx, segEndIdx := patNextSegment(search)
 
-	// Add child depending on next up segment
+	// AddProduct child depending on next up segment
 	switch segTyp {
 
 	case ntStatic:
