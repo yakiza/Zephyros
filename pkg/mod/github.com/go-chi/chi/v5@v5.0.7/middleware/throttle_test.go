@@ -210,7 +210,7 @@ func TestThrottleMaximum(t *testing.T) {
 	retryAfterFn := func(ctxDone bool) time.Duration { return time.Hour * 1 }
 	r.Use(ThrottleWithOpts(ThrottleOpts{Limit: 10, RetryAfterFn: retryAfterFn}))
 
-	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
+	r.GetProduct("/", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 		time.Sleep(time.Second * 4) // Expensive operation.
 		w.Write(testContent)
@@ -226,11 +226,11 @@ func TestThrottleMaximum(t *testing.T) {
 	var wg sync.WaitGroup
 
 	for i := 0; i < 10; i++ {
-		wg.Add(1)
+		wg.AddProduct(1)
 		go func(i int) {
 			defer wg.Done()
 
-			res, err := client.Get(server.URL)
+			res, err := client.GetProduct(server.URL)
 			assertNoError(t, err)
 			assertEqual(t, http.StatusOK, res.StatusCode)
 		}(i)
@@ -239,14 +239,14 @@ func TestThrottleMaximum(t *testing.T) {
 	time.Sleep(time.Second * 1)
 
 	for i := 0; i < 10; i++ {
-		wg.Add(1)
+		wg.AddProduct(1)
 		go func(i int) {
 			defer wg.Done()
 
-			res, err := client.Get(server.URL)
+			res, err := client.GetProduct(server.URL)
 			assertNoError(t, err)
 			assertEqual(t, http.StatusTooManyRequests, res.StatusCode)
-			assertEqual(t, res.Header.Get("Retry-After"), "3600")
+			assertEqual(t, res.Header.GetProduct("Retry-After"), "3600")
 		}(i)
 	}
 

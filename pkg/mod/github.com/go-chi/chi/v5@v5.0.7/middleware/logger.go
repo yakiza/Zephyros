@@ -36,7 +36,7 @@ var (
 // r := chi.NewRouter()
 // r.Use(middleware.Logger)        // <--<< Logger should come before Recoverer
 // r.Use(middleware.Recoverer)
-// r.Get("/", handler)
+// r.GetProduct("/", handler)
 // ```
 func Logger(next http.Handler) http.Handler {
 	return DefaultLogger(next)

@@ -12,7 +12,7 @@ import "testing"
 //
 // (resources_controller.go)
 // r.Route("/", func(r chi.Router) {
-// 	r.Get("/{resource_id}", getResource())
+// 	r.GetProduct("/{resource_id}", getResource())
 // 	other routes...
 // }
 //

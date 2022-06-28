@@ -2,20 +2,22 @@ package api
 
 import (
 	"github.com/go-chi/chi"
-	"github.com/yakiza/Zephyros/databases/fakedb"
+	"github.com/yakiza/Zephyros/api/internal"
 	"github.com/yakiza/Zephyros/product"
+	"github.com/yakiza/Zephyros/storage/fakedb"
 	"go.uber.org/zap"
 	"net/http"
 )
 
-func NewRouter() http.Handler {
+func NewHandler() http.Handler {
 	r := chi.NewRouter()
 
 	var db fakedb.DB
 	logger, _ := zap.NewProduction()
-	addHandler := product.NewAddHandler(logger, db.Product())
+	addHandler := product.NewAddProductHandler(logger, db.Product())
 
-	r.Mount(ProductMountPoint, MakeProductController(addHandler))
+	r.Mount(internal.HealthCheckMountPoint, HealthCheckController())
+	r.Mount(internal.ProductMountPoint, MakeProductController(addHandler))
 
 	return r
 }
