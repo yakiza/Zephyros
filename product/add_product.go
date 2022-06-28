@@ -12,7 +12,6 @@ type AddProductHandler struct {
 }
 
 func (h AddProductHandler) AddProduct(product Zephyros.Product) error {
-	// TODO: Check that passed in data is valid
 	h.Logger.Info("Adding Product", zap.Any("Product", product))
 	err := h.ProductRepository.AddProduct(product)
 	if err != nil {
@@ -22,7 +21,7 @@ func (h AddProductHandler) AddProduct(product Zephyros.Product) error {
 	return nil
 }
 
-func NewAddProductHandler(logger *zap.Logger, productRepository repository.ProductRepository) AddProductHandler {
+func NewAddProductHandler(logger *zap.Logger, productRepository repository.ProductRepository) Zephyros.AddProductService {
 	return AddProductHandler{
 		Logger:            logger,
 		ProductRepository: productRepository,

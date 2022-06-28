@@ -2,6 +2,7 @@ package api
 
 import (
 	"github.com/go-chi/chi"
+	"github.com/yakiza/Zephyros/api/internal"
 	"github.com/yakiza/Zephyros/product"
 	"github.com/yakiza/Zephyros/storage/fakedb"
 	"go.uber.org/zap"
@@ -15,8 +16,8 @@ func NewHandler() http.Handler {
 	logger, _ := zap.NewProduction()
 	addHandler := product.NewAddProductHandler(logger, db.Product())
 
-	r.Mount(HealthCheckMountPoint, HealthCheckController())
-	r.Mount(ProductMountPoint, MakeProductController(addHandler))
+	r.Mount(internal.HealthCheckMountPoint, HealthCheckController())
+	r.Mount(internal.ProductMountPoint, MakeProductController(addHandler))
 
 	return r
 }
