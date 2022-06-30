@@ -4,21 +4,21 @@ import "github.com/yakiza/Zephyros"
 
 func VorasTestKite() Zephyros.Product {
 	return Zephyros.Product{
-		Brand:  "Voras",
-		Model:  "XX",
-		Size:   12,
-		Color:  "red",
-		Season: 2022,
+		Name:        "Kite",
+		Description: "Lorem Ipsum",
+		Brand:       "Voras",
+		Price:       1280,
+		Currency:    "GBP",
 	}
 }
 
 func AeolianTestKite() Zephyros.Product {
 	return Zephyros.Product{
-		Brand:  "Aeolian",
-		Model:  "FX",
-		Size:   12,
-		Color:  "yellow",
-		Season: 2022,
+		Name:        "Kite",
+		Description: "Lorem Ipsum",
+		Brand:       "Aeolian",
+		Price:       1480,
+		Currency:    "EURO",
 	}
 }
 

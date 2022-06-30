@@ -13,7 +13,7 @@ var _ http.Handler = ProductController{}
 
 type ProductController struct {
 	chi.Router
-	AddProductHandler product.AddHandler
+	AddProductHandler product.AddProductHandler
 }
 
 func (h *ProductController) AddProduct(w http.ResponseWriter, r *http.Request) {
@@ -25,7 +25,7 @@ func (h *ProductController) AddProduct(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 	}
-	_ = h.AddProductHandler.Add(kiteObj)
+	_ = h.AddProductHandler.AddProduct(kiteObj)
 	if err != nil {
 		w.WriteHeader(http.StatusConflict)
 		_, err := w.Write([]byte("Duplicate found"))
@@ -35,12 +35,7 @@ func (h *ProductController) AddProduct(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (h *ProductController) GetProduct(w http.ResponseWriter, r *http.Request) {
-
-	//chi.URLParam()
-}
-
-func MakeProductController(addProductHandler product.AddHandler) ProductController {
+func MakeProductController(addProductHandler product.AddProductHandler) ProductController {
 	productController := ProductController{
 		Router:            chi.NewRouter(),
 		AddProductHandler: addProductHandler,

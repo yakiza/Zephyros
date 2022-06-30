@@ -26,7 +26,7 @@ var (
 //    r := chi.NewRouter()
 //    r.Use(middleware.URLFormat)
 //
-//    r.Get("/articles/{id}", ListArticles)
+//    r.GetProduct("/articles/{id}", ListArticles)
 //
 //    return r
 //  }

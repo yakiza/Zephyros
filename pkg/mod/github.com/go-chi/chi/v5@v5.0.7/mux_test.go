@@ -1082,7 +1082,7 @@ func TestMuxSubroutes(t *testing.T) {
 	// var sr2 *Mux
 	r.Route("/accounts/{accountID}", func(r Router) {
 		_ = r.(*Mux) // sr2
-		// r.Get("/", hAccountView1)
+		// r.GetProduct("/", hAccountView1)
 		r.Mount("/", sr3)
 	})
 
@@ -1199,7 +1199,7 @@ func TestSingleHandler(t *testing.T) {
 // 	var r Router = NewRouter()
 //
 // 	var r2 Router = NewACLMux() //NewRouter()
-// 	r2.Get("/hi", func(w http.ResponseWriter, r *http.Request) {
+// 	r2.GetProduct("/hi", func(w http.ResponseWriter, r *http.Request) {
 // 		w.Write([]byte("hi"))
 // 	})
 //

@@ -1,4 +1,4 @@
-package api
+package internal
 
 import "github.com/yakiza/Zephyros"
 
@@ -12,17 +12,17 @@ type KiteJson struct {
 
 func MarshallKite(kite KiteJson) Zephyros.Product {
 	return Zephyros.Product{
-		Brand:  kite.Brand,
-		Model:  kite.Model,
-		Size:   kite.Size,
-		Color:  kite.Color,
-		Season: kite.Season,
+		Category: kite.Brand,
+		Model:    kite.Model,
+		Size:     kite.Size,
+		Color:    kite.Color,
+		Season:   kite.Season,
 	}
 }
 
 func UnmarshalKite(kite Zephyros.Product) KiteJson {
 	return KiteJson{
-		Brand:  kite.Brand,
+		Brand:  kite.Category,
 		Model:  kite.Model,
 		Size:   kite.Size,
 		Color:  kite.Color,

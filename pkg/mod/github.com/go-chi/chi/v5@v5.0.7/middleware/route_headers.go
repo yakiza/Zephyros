@@ -19,8 +19,8 @@ import (
 //   Route("Host", "*.example.com", middleware.New(rSubdomain)).
 //   Handler)
 //
-// r.Get("/", h)
-// rSubdomain.Get("/", h2)
+// r.GetProduct("/", h)
+// rSubdomain.GetProduct("/", h2)
 //
 //
 // Another example, imagine you want to setup multiple CORS handlers, where for

@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"github.com/stretchr/testify/suite"
 	"github.com/yakiza/Zephyros/api"
+	"github.com/yakiza/Zephyros/api/internal"
 	"github.com/yakiza/Zephyros/internal/test_data"
 	"net/http"
 	"net/http/httptest"
@@ -19,14 +20,14 @@ type ProductTestSuite struct {
 }
 
 func (suite *ProductTestSuite) SetupTest() {
-	suite.handler = api.NewRouter()
+	suite.handler = api.NewHandler()
 }
 
 func (suite *ProductTestSuite) TestAddKiteSuccess() {
 	data, err := json.Marshal(test_data.VorasTestKite())
 	suite.NoError(err)
 
-	request := httptest.NewRequest(http.MethodPost, api.ProductMountPoint, bytes.NewReader(data))
+	request := httptest.NewRequest(http.MethodPost, internal.ProductMountPoint, bytes.NewReader(data))
 	w := httptest.NewRecorder()
 	suite.handler.ServeHTTP(w, request)
 
@@ -34,7 +35,7 @@ func (suite *ProductTestSuite) TestAddKiteSuccess() {
 }
 
 func (suite *ProductTestSuite) TestAddKiteFailed() {
-	request := httptest.NewRequest(http.MethodPost, api.ProductMountPoint, nil)
+	request := httptest.NewRequest(http.MethodPost, internal.ProductMountPoint, nil)
 	w := httptest.NewRecorder()
 	suite.handler.ServeHTTP(w, request)
 
@@ -43,7 +44,7 @@ func (suite *ProductTestSuite) TestAddKiteFailed() {
 
 func (suite *ProductTestSuite) TestAddKiteMalformedJSON() {
 	malformedJSON := "{{}"
-	request := httptest.NewRequest(http.MethodPost, api.ProductMountPoint, bytes.NewReader([]byte(malformedJSON)))
+	request := httptest.NewRequest(http.MethodPost, internal.ProductMountPoint, bytes.NewReader([]byte(malformedJSON)))
 	w := httptest.NewRecorder()
 	suite.handler.ServeHTTP(w, request)
 
